@@ -47,7 +47,7 @@ class Reach extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        if($player->getAttackReach() > 4){
+        if($player->getAttackReach() > 4.3){
             $this->failed($player);
         }
     }
