@@ -3,6 +3,9 @@
 - If I detect an error, you can submit a Issues on this project, I will still develop this project in the near future.
 
 # Feature
+
+When you turn on "Ban" in the Config section they will allow the modules that I have listed to tag BAN below to be issued.
+
 - KillAura
 - Reach
 - Fly
