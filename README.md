@@ -9,8 +9,8 @@
 - JetPack
 - AirJump
 - Glide
-- Nuker (If you're using a special method to get through it, use the plugin's API method to prevent false detection.)
-- FastBreak (If you're using a special method to get through it, use the plugin's API method to prevent false detection.)
+- Nuker (If you're using a special method to get through it, use the plugin's API method to prevent false detection.) (BAN)
+- FastBreak (If you're using a special method to get through it, use the plugin's API method to prevent false detection.) (BAN)
 - FillBlock
 - 2 Badpackets
 - AutoArmor (WIP)
