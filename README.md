@@ -19,8 +19,7 @@
 - This is a version that is still in development we will update in detail here when it is completed.
 
 # Config Example
-'''
----
+```---
 reallycheat:
     prefix: "§cRCheat"
     alerts: 
@@ -51,4 +50,4 @@ reallycheat:
             enable: false
             permission: "reallycheat.bypass"
 ...
-'''
+```
