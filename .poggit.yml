@@ -5,4 +5,5 @@ branches:
 projects:
   ReallyCheat:
     path: ReallyCheat/
+    lint: false
 ...
