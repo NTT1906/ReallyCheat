@@ -1,5 +1,5 @@
 <a align="center"><img src="https://github.com/hachkingtohach1/ReallyCheat/blob/main/ReallyCheat.png"></img></a>
-<img src="https://github.com/hachkingtohach1/ReallyCheat/blob/main/ReallyCheat.png" alt="ReallyCheat" height="1000" width="1000" />
+<img src="https://github.com/hachkingtohach1/ReallyCheat/blob/main/ReallyCheat.png" alt="ReallyCheat" height="300" width="500" />
 # ReallyCheat (FREE)
 - This is AntiCheat for Pocketmine-PMMP4
 - If I detect an error, you can submit a Issues on this project, I will still develop this project in the near future.
