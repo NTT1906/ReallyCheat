@@ -1,6 +1,6 @@
 <img src="https://github.com/hachkingtohach1/ReallyCheat/blob/main/ReallyCheat.png" alt="ReallyCheat" height="350" width="900" />
 
-- This is AntiCheat for Pocketmine-PMMP4
+- This is AntiCheat version FREE for Pocketmine-PMMP4 
 - If I detect an error, you can submit a Issues on this project, I will still develop this project in the near future.
 
 # Feature
