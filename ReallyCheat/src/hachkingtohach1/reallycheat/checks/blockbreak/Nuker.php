@@ -22,16 +22,16 @@
  *  SOFTWARE.
  */
 
-namespace hachkingtohach1\reallycheat\checks\blockplace;
+namespace hachkingtohach1\reallycheat\checks\blockbreak;
 
 use hachkingtohach1\reallycheat\checks\Check;
 use hachkingtohach1\reallycheat\player\RCPlayerAPI;
 use pocketmine\network\mcpe\protocol\DataPacket;
 
-class FillBlock extends Check{
+class Nuker extends Check{
 
     public function getName() :string{
-        return "FillBlock";
+        return "Nuker/InstaBreak";
     }
 
     public function enable() :bool{
@@ -48,10 +48,10 @@ class FillBlock extends Check{
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
         $isCreative = $player->isCreative() ? 5 : 0;
-        if($player->actionPlacingSpecial() and (($player->getNumberBlocksAllowPlace() + $isCreative) < $player->getBlocksPlacedASec())){
+        if($player->actionBreakingSpecial() and (($player->getNumberBlocksAllowBreak() + $isCreative) < $player->getBlocksBrokeASec())){
             $this->failed($player);
-            $player->setActionPlacingSpecial(false);
-            $player->setBlocksPlacedASec(0); 
+            $player->setActionBreakingSpecial(false);
+            $player->setBlocksBrokeASec(0); 
             $player->setFlagged(true);          
         }
     }
