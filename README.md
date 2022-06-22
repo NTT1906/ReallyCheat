@@ -17,6 +17,7 @@ When you turn on "Ban" in the Config section they will allow the modules that I 
 - Nuker (If you're using a special method to get through it, use the plugin's API method to prevent false detection.) (BAN)
 - FastBreak (If you're using a special method to get through it, use the plugin's API method to prevent false detection.) (BAN)
 - FillBlock
+- Tower
 - 2 Badpackets
 - AutoArmor (WIP)
 
