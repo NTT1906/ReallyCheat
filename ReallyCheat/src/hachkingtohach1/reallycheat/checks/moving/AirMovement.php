@@ -47,13 +47,14 @@ class AirMovement extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
+        //This is can false check
         $nLocation = $player->getNLocation();
         if(!empty($nLocation)){   
             $canCheck = !$player->isUnderAttack() and !$player->allowJump() and !$player->allowTeleport() and !$player->getAllowFlight() and !$player->isInLiquid() and !$player->isOnGround() and $player->getVelocityV() === 0 and $player->getLastGroundY() !== 0 and $nLocation["to"]->getY() > $player->getLastGroundY() and $nLocation["to"]->getY() > $nLocation["from"]->getY() ? true : false;           
             if($canCheck and $player->getOnlineTime() >= 15 and !$player->isCreative() and $player->getTimeSkipJump() > 10){     
                 $distance = $nLocation["to"]->getY() - $player->getLastGroundY();                         
                 $effects = [];
-                $limit = 1.45;
+                $limit = 2;
                 foreach($player->getEffects()->all() as $index => $effect){
                     $transtable = $effect->getType()->getName()->getText();
                     $effects[$transtable] = $effect->getEffectLevel() + 1;
