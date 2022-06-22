@@ -47,7 +47,7 @@ class BlockReach extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        if($player->getDistanceInteractBlock() > 6.1){
+        if($player->getDistanceInteractBlock() > 7){
             $this->failed($player);         
         }
     }
