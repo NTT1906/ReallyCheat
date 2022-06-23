@@ -50,7 +50,7 @@ class AirMovement extends Check{
         //This is can false check
         $nLocation = $player->getNLocation();
         if(!empty($nLocation)){   
-            $canCheck = !$player->isUnderAttack() and !$player->allowJump() and !$player->allowTeleport() and !$player->getAllowFlight() and !$player->isInLiquid() and !$player->isOnGround() and $player->getVelocityV() === 0 and $player->getLastGroundY() !== 0 and $nLocation["to"]->getY() > $player->getLastGroundY() and $nLocation["to"]->getY() > $nLocation["from"]->getY() ? true : false;           
+            $canCheck = !$player->isUnderAttack() && !$player->allowJump() && !$player->allowTeleport() && !$player->getAllowFlight() && !$player->isInLiquid() && !$player->isOnGround() && $player->getVelocityV() === 0 && $player->getLastGroundY() !== 0 && $nLocation["to"]->getY() > $player->getLastGroundY() && $nLocation["to"]->getY() > $nLocation["from"]->getY() ? true : false;           
             if($canCheck and $player->getOnlineTime() >= 15 and $player->isSurvival() and $player->getTimeSkipJump() > 10){     
                 $distance = $nLocation["to"]->getY() - $player->getLastGroundY();                         
                 $effects = [];
