@@ -41,7 +41,7 @@ class BlockUtil{
         $blockY = $location->getY() - $down;
         $blockZ = $location->getZ();
         $world = $location->getWorld();
-        if(!in_array($world->getBlock(new Vector3($blockX, $blockY, $blockZ))->getId(), $id)) return true;
+        if(!in_array($world->getBlock(new Vector3($blockX, $blockY, $blockZ))->getId(), $id, true)) return true;
         if($fracX < 0.3){
             if(!in_array($world->getBlock(new Vector3($blockX - 1, $blockY, $blockZ))->getId(), $id)) return true;
             if($fracZ < 0.3){

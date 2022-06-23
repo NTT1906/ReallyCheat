@@ -32,7 +32,7 @@ use pocketmine\plugin\PluginBase;
 
 class RCAPIProvider extends PluginBase implements IRCAPI{
 	
-	private static $instance = null;
+	private static ?RCAPIProvider $instance = null;
 	
 	/**
 	 * @return void
@@ -62,10 +62,7 @@ class RCAPIProvider extends PluginBase implements IRCAPI{
 	 * @return bool
 	 */
 	public function isRCPlayerAPI(RCPlayer $player) :bool{
-		if($player instanceof RCPlayerAPI){
-			return true;
-		}
-		return false;
+		return $player instanceof RCPlayerAPI; // This is useless, people could use this piece of code instance of calling this redundant function
 	}
 	
 }
