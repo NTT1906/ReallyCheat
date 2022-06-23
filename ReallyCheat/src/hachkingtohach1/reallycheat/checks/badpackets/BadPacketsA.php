@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -48,11 +49,9 @@ class BadPacketsA extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        if($packet instanceof PlayerAuthInputPacket){
-            if(abs($packet->getPitch()) > 90){           
-                $this->failed($player);
-            }
-        }
+	    if (($packet instanceof PlayerAuthInputPacket) && abs($packet->getPitch()) > 90) {
+		    $this->failed($player);
+	    }
     }
 
 }

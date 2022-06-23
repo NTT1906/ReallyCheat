@@ -29,16 +29,16 @@ use pocketmine\math\Vector3;
 
 class MathUtil{
 
-    public static function getVectorOnEyeHeight(RCPlayerAPI $player){
-        return $player->getLocation()->add(0, $player->getEyeHeight(), 0);
-    }
+	public static function getVectorOnEyeHeight(RCPlayerAPI $player) : Vector3{
+		return $player->getLocation()->add(0, $player->getEyeHeight(), 0);
+	}
 
-    public static function getDeltaDirectionVector(RCPlayerAPI $player, float $distance){
-        return $player->getDirectionVector()->multiply($distance);
-    }
+	public static function getDeltaDirectionVector(RCPlayerAPI $player, float $distance) : Vector3{
+		return $player->getDirectionVector()->multiply($distance);
+	}
 
-    public static function distance(Vector3 $from, Vector3 $to){
-        return sqrt(pow($from->getX() - $to->getX(), 2) + pow($from->getY() - $to->getY(), 2) + pow($from->getZ() - $to->getZ(), 2));
-    }
+	public static function distance(Vector3 $from, Vector3 $to) : float{
+		return $from->distance($to);
+	}
 
 }

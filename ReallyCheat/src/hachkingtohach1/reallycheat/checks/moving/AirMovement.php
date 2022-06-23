@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -47,21 +48,21 @@ class AirMovement extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        //This is can false check
+	    //This can false check
         $nLocation = $player->getNLocation();
-        if(!empty($nLocation)){   
-            $canCheck = !$player->isUnderAttack() && !$player->allowJump() && !$player->allowTeleport() && !$player->getAllowFlight() && !$player->isInLiquid() && !$player->isOnGround() && $player->getVelocityV() === 0 && $player->getLastGroundY() !== 0 && $nLocation["to"]->getY() > $player->getLastGroundY() && $nLocation["to"]->getY() > $nLocation["from"]->getY() ? true : false;           
-            if($canCheck and $player->getOnlineTime() >= 15 and $player->isSurvival() and $player->getTimeSkipJump() > 10){     
-                $distance = $nLocation["to"]->getY() - $player->getLastGroundY();                         
-                $effects = [];
-                $limit = 2.2;
-                foreach($player->getEffects()->all() as $index => $effect){
-                    $transtable = $effect->getType()->getName()->getText();
-                    $effects[$transtable] = $effect->getEffectLevel() + 1;
-                }
-                $limit += isset($effects["potion.jump"]) ? (pow($effects["potion.jump"] + 1.4, 2) / 16) : 0;
-                if($distance > $limit){
-                    $this->failed($player);
+        if(!empty($nLocation)) {
+	        $canCheck = (!$player->isUnderAttack() && !$player->allowJump() && !$player->allowTeleport() && !$player->getAllowFlight() && !$player->isInLiquid() && !$player->isOnGround() && $player->getVelocityV() === 0 && $player->getLastGroundY() !== 0.0 && $nLocation["to"]->getY() > $player->getLastGroundY() && $nLocation["to"]->getY() > $nLocation["from"]->getY());
+	        if ($canCheck && $player->getOnlineTime() >= 15 && $player->isSurvival() && $player->getTimeSkipJump() > 10) {
+		        $distance = $nLocation["to"]->getY() - $player->getLastGroundY();
+		        $effects = [];
+		        $limit = 2.2;
+		        foreach ($player->getEffects()->all() as $index => $effect) {
+			        $transtable = $effect->getType()->getName()->getText();
+			        $effects[$transtable] = $effect->getEffectLevel() + 1;
+		        }
+		        $limit += isset($effects["potion.jump"]) ? ((($effects["potion.jump"] + 1.4) ** 2) / 16) : 0;
+		        if ($distance > $limit) {
+			        $this->failed($player);
                 }            
             }
         }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -24,10 +25,10 @@
 
 namespace hachkingtohach1\reallycheat\player;
 
-use hachkingtohach1\reallycheat\components\player\RCPlayer;
 use hachkingtohach1\reallycheat\components\player\IPlayerAPI;
-use pocketmine\entity\Location;
+use hachkingtohach1\reallycheat\components\player\RCPlayer;
 use pocketmine\block\BlockLegacyIds;
+use pocketmine\entity\Location;
 
 class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
     
@@ -192,9 +193,12 @@ class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
     }
 
     //On ground
-    public function isOnGround() :bool{
-        return $this->onGround;
-    }
+
+	/** 'isOnGround' method can be dropped, as it identical to parent's one.
+	 * public function isOnGround() :bool{
+	 * return $this->onGround;
+	 * }
+	 */
 
     public function setOnGround(bool $data) :void{
         $this->onGround = $data;
@@ -274,10 +278,7 @@ class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
 
     //Digging
     public function isDigging() :bool{
-        if($this->blockBreakHandler !== null){
-            return true;
-        }
-        return false;
+	    return $this->blockBreakHandler !== null;
     }
 
     //In Web
@@ -300,39 +301,39 @@ class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
     }
 
     //Last ground Y
-    public function getLastGroundY() :float{
-        return $this->lastGroundY;
+	public function getLastGroundY() : float{
+		return $this->lastGroundY;
     }
 
-    public function setlastGroundY(float $data) :void{
-        $this->lastGroundY = $data;
+	public function setLastGroundY(float $data) : void{
+		$this->lastGroundY = $data;
     }
 
     //Last no ground Y
-    public function getLastNoGroundY() :float{
-        return $this->lastNoGroundY;
+	public function getLastNoGroundY() : float{
+		return $this->lastNoGroundY;
     }
 
-    public function setlastNoGroundY(float $data) :void{
-        $this->lastNoGroundY = $data;
+	public function setLastNoGroundY(float $data) : void{
+		$this->lastNoGroundY = $data;
     }
 
     //Velocity X
-    public function getVelocityX() :float{
-        return $this->velocityX;
+	public function getVelocityX() : float{
+		return $this->velocityX;
     }
 
-    public function setVelocityX(float $data) :void{
-        $this->velocityX = $data;
+	public function setVelocityX(float $data) : void{
+		$this->velocityX = $data;
     }
 
     //Velocity Y
-    public function getVelocityY() :float{
-        return $this->velocityY;
+	public function getVelocityY() : float{
+		return $this->velocityY;
     }
 
-    public function setVelocityY(float $data) :void{
-        $this->velocityY = $data;
+	public function setVelocityY(float $data) : void{
+		$this->velocityY = $data;
     }
 
     //Velocity Z
@@ -381,22 +382,22 @@ class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
     }
 
     //Ping
-    public function getPing() :float{
-        return $this->getNetworkSession()->getPing();
+	public function getPing() : float{
+		return $this->getNetworkSession()->getPing();
     }
 
     //Velocity H
-    public function getVelocityH() :int{
-        return $this->velocityH;
+	public function getVelocityH() : int{
+		return $this->velocityH;
     }
 
-    public function setVelocityH(int $data) :void{
-        $this->velocityH = $data;
+	public function setVelocityH(int $data) : void{
+		$this->velocityH = $data;
     }
 
     //Velocity V
-    public function getVelocityV() :int{
-        return $this->velocityV;
+	public function getVelocityV() : int{
+		return $this->velocityV;
     }
 
     public function setVelocityV(int $data) :void{
@@ -500,10 +501,7 @@ class RCPlayerAPI extends RCPlayer implements IPlayerAPI{
 
     //Violation
     public function getViolation(string $supplier) :int{
-        if(isset($this->violations[$this->getName()][$supplier])){
-            return $this->violations[$this->getName()][$supplier];
-        }
-        return 0;
+	    return $this->violations[$this->getName()][$supplier] ?? 0;
     }
 
     public function setViolation(string $supplier, int $amount) :void{

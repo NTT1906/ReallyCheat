@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -47,13 +48,13 @@ class FillBlock extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        $isCreative = $player->isCreative() ? 5 : 0;
-        if($player->actionPlacingSpecial() and (($player->getNumberBlocksAllowPlace() + $isCreative) < $player->getBlocksPlacedASec())){
-            $this->failed($player);
-            $player->setActionPlacingSpecial(false);
-            $player->setBlocksPlacedASec(0); 
-            $player->setFlagged(true);          
-        }
+	    $isCreative = $player->isCreative() ? 5 : 0;
+	    if ($player->actionPlacingSpecial() && (($player->getNumberBlocksAllowPlace() + $isCreative) < $player->getBlocksPlacedASec())) {
+		    $this->failed($player);
+		    $player->setActionPlacingSpecial(false);
+		    $player->setBlocksPlacedASec(0);
+		    $player->setFlagged(true);
+	    }
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -31,7 +32,7 @@ use pocketmine\network\mcpe\protocol\DataPacket;
 class Nuker extends Check{
 
     public function getName() :string{
-        return "Nuker/InstaBreak";
+	    return "Nuker/InstantBreak";
     }
 
     public function enable() :bool{
@@ -47,13 +48,13 @@ class Nuker extends Check{
     }
 
     public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        $isCreative = $player->isCreative() ? 5 : 0;
-        if($player->actionBreakingSpecial() and (($player->getNumberBlocksAllowBreak() + $isCreative) < $player->getBlocksBrokeASec())){
-            $this->failed($player);
-            $player->setActionBreakingSpecial(false);
-            $player->setBlocksBrokeASec(0); 
-            $player->setFlagged(true);          
-        }
+	    $isCreative = $player->isCreative() ? 5 : 0;
+	    if ($player->actionBreakingSpecial() && (($player->getNumberBlocksAllowBreak() + $isCreative) < $player->getBlocksBrokeASec())) {
+		    $this->failed($player);
+		    $player->setActionBreakingSpecial(false);
+		    $player->setBlocksBrokeASec(0);
+		    $player->setFlagged(true);
+	    }
     }
 
 }

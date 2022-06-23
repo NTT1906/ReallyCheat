@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 /**
  *  Copyright (c) 2022 hachkingtohach1
@@ -30,29 +31,29 @@ use pocketmine\network\mcpe\protocol\DataPacket;
 
 class AutoArmor extends Check{
 
-    public function getName() :string{
-        return "AutoArmor";
-    }
+	public function getName() : string{
+		return "AutoArmor";
+	}
 
-    public function enable() :bool{
-        return true;
-    }
+	public function enable() : bool{
+		return true;
+	}
 
-    public function ban() :bool{
-        return false;
-    }
+	public function ban() : bool{
+		return false;
+	}
 
-    public function maxViolations() :int{
-        return 5;
-    }
+	public function maxViolations() : int{
+		return 5;
+	}
 
-    //This only causes cheaters to slow down their actions
-    public function check(DataPacket $packet, RCPlayerAPI $player) :void{
-        if($player->isInventoryOpen() and $player->isTransactionArmorInventory()){
-            $this->failed($player);               
-        }else{
-            $player->setTransactionArmorInventory(false);
-        }     
-    }
+	//This only causes cheaters to slow down their actions
+	public function check(DataPacket $packet, RCPlayerAPI $player) : void{
+		if ($player->isInventoryOpen() && $player->isTransactionArmorInventory()) {
+			$this->failed($player);
+		} else {
+			$player->setTransactionArmorInventory(false);
+		}
+	}
 
 }
