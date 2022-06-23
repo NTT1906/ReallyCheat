@@ -38,6 +38,7 @@ use pocketmine\event\player\PlayerCreationEvent;
 use pocketmine\event\player\PlayerItemUseEvent;
 use pocketmine\event\player\PlayerJoinEvent;
 use pocketmine\event\player\PlayerJumpEvent;
+use pocketmine\event\player\PlayerDeathEvent;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
 use pocketmine\event\entity\EntityDamageEvent;
@@ -145,6 +146,13 @@ class PlayerListener extends RCListener{
             $distance = BlockUtil::distance($posPlayer, $posBlock) + $isBlockTop;
             $player->setDistanceInteractBlock($distance);
         }
+    }
+	
+    public function onPlayerDeath(PlayerDeathEvent $event){
+	$player = $event->getPlayer();
+	if($player instanceof RCPlayerAPI){
+	    $player->setDistanceInteractBlock(0); // This is a debug
+	}
     }
 
     public function onPlayerBreak(BlockBreakEvent $event) :void{
